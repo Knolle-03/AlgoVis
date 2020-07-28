@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ld.PrimaryController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ld.PrimaryController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -28,7 +28,7 @@
       </MenuBar>
    </top>
    <center>
-      <Canvas fx:id="sortingCanvas" height="300.0" width="500.0" BorderPane.alignment="TOP_LEFT" />
+      <Canvas fx:id="sortingCanvas" height="450.0" width="800.0" BorderPane.alignment="TOP_LEFT" />
    </center>
    <left>
       <GridPane prefHeight="499.0" prefWidth="198.0" BorderPane.alignment="CENTER">
@@ -40,7 +40,7 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="119.0" minHeight="0.0" prefHeight="25.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="250.0" minHeight="0.0" prefHeight="3.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="250.0" minHeight="10.0" prefHeight="3.0" vgrow="NEVER" />
           <RowConstraints maxHeight="327.0" minHeight="0.0" prefHeight="25.0" vgrow="NEVER" />
             <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="3.0" vgrow="NEVER" />
             <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="25.0" vgrow="NEVER" />
@@ -59,7 +59,7 @@
             <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Slider fx:id="arrayMinValueSlider" onDragDetected="#handleArrayMinValueSliderChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="arrayMinValueTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="arrayMinValueTextField" onAction="#handleArrayMinSizeTextFieldChange" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Separator prefWidth="200.0" GridPane.rowIndex="3" />
             <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -68,7 +68,7 @@
             <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Slider fx:id="arrayMaxValueSlider" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="arrayMaxValueTextField" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <TextField fx:id="arrayMaxValueTextField" onAction="#handleArrayMaxSizeTextFieldChange" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
@@ -76,13 +76,18 @@
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <SplitMenuButton mnemonicParsing="false" prefWidth="187.0" text="Sorting Algorithms" GridPane.columnSpan="3" GridPane.rowIndex="6" GridPane.valignment="TOP">
+            <ChoiceBox fx:id="algorithmPicker" prefWidth="187.0" GridPane.columnSpan="3" GridPane.rowIndex="6" GridPane.valignment="TOP">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
               </items>
-            </SplitMenuButton>
+            </ChoiceBox>
          </children>
       </GridPane>
    </left>
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="sortingBtn" mnemonicParsing="false" onAction="#handleSortBtnPressed" text="Sort!" />
+         </children>
+      </HBox>
+   </bottom>
 </BorderPane>
