@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ld.PrimaryController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <Canvas fx:id="sortingCanvas" height="300.0" width="500.0" BorderPane.alignment="TOP_LEFT" />
+   </center>
+   <left>
+      <GridPane prefHeight="499.0" prefWidth="198.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="NEVER" maxWidth="136.0" minWidth="10.0" prefWidth="65.0" />
+          <ColumnConstraints hgrow="NEVER" maxWidth="136.0" minWidth="10.0" prefWidth="60.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="207.0" minWidth="10.0" prefWidth="71.0" />
+            <ColumnConstraints hgrow="NEVER" maxWidth="273.0" minWidth="0.0" prefWidth="3.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="119.0" minHeight="0.0" prefHeight="25.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="250.0" minHeight="0.0" prefHeight="3.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="327.0" minHeight="0.0" prefHeight="25.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="3.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="25.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="3.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="365.0" minHeight="10.0" prefHeight="365.0" vgrow="ALWAYS" />
+        </rowConstraints>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <children>
+            <TextField fx:id="arraySizeTextField" onAction="#handleArraySizeTextFieldChange" prefWidth="126.0" GridPane.columnIndex="2" />
+            <Slider fx:id="arraySizeSlider" majorTickUnit="500.0" max="1000.0" GridPane.columnIndex="1" />
+            <Label text="Array Size: " />
+            <Label text="min value: " GridPane.rowIndex="2" />
+            <Separator prefWidth="200.0" GridPane.rowIndex="1" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Slider fx:id="arrayMinValueSlider" onDragDetected="#handleArrayMinValueSliderChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="arrayMinValueTextField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Separator prefWidth="200.0" GridPane.rowIndex="3" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="max value: " GridPane.rowIndex="4" />
+            <Separator prefWidth="200.0" GridPane.rowIndex="5" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Slider fx:id="arrayMaxValueSlider" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="arrayMaxValueTextField" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <SplitMenuButton mnemonicParsing="false" prefWidth="187.0" text="Sorting Algorithms" GridPane.columnSpan="3" GridPane.rowIndex="6" GridPane.valignment="TOP">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </SplitMenuButton>
+         </children>
+      </GridPane>
+   </left>
+</BorderPane>
