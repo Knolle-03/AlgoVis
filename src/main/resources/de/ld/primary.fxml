@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ld.PrimaryController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.ld.PrimaryController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -28,10 +28,12 @@
       </MenuBar>
    </top>
    <center>
-      <Canvas fx:id="sortingCanvas" height="450.0" width="800.0" BorderPane.alignment="TOP_LEFT" />
+       <AnchorPane fx:id="canvasParent" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: black;" BorderPane.alignment="TOP_LEFT">
+           <Canvas fx:id="sortingCanvas" height="500.0" width="800.0" />
+       </AnchorPane>
    </center>
    <left>
-      <GridPane prefHeight="499.0" prefWidth="198.0" BorderPane.alignment="CENTER">
+      <GridPane prefHeight="476.0" prefWidth="198.0" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="NEVER" maxWidth="136.0" minWidth="10.0" prefWidth="65.0" />
           <ColumnConstraints hgrow="NEVER" maxWidth="136.0" minWidth="10.0" prefWidth="60.0" />
@@ -39,13 +41,15 @@
             <ColumnConstraints hgrow="NEVER" maxWidth="273.0" minWidth="0.0" prefWidth="3.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="119.0" minHeight="0.0" prefHeight="25.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="250.0" minHeight="10.0" prefHeight="3.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="327.0" minHeight="0.0" prefHeight="25.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="3.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="25.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="327.0" minHeight="10.0" prefHeight="3.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="365.0" minHeight="10.0" prefHeight="365.0" vgrow="ALWAYS" />
+          <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="29.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="34.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="10.0" minHeight="0.0" prefHeight="47.0" vgrow="NEVER" />
+            <RowConstraints maxHeight="25.0" minHeight="25.0" prefHeight="0.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="35.0" vgrow="ALWAYS" />
+            <RowConstraints maxHeight="398.0" minHeight="10.0" prefHeight="165.0" vgrow="ALWAYS" />
         </rowConstraints>
          <opaqueInsets>
             <Insets />
@@ -58,7 +62,7 @@
             <Separator prefWidth="200.0" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Slider fx:id="arrayMinValueSlider" onDragDetected="#handleArrayMinValueSliderChange" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Slider fx:id="arrayMinValueSlider" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="arrayMinValueTextField" onAction="#handleArrayMinSizeTextFieldChange" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Separator prefWidth="200.0" GridPane.rowIndex="3" />
             <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
@@ -67,7 +71,7 @@
             <Separator prefWidth="200.0" GridPane.rowIndex="5" />
             <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Slider fx:id="arrayMaxValueSlider" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Slider fx:id="arrayMaxValueSlider" max="1000.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="arrayMaxValueTextField" onAction="#handleArrayMaxSizeTextFieldChange" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
@@ -76,10 +80,16 @@
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Separator orientation="VERTICAL" prefHeight="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <ChoiceBox fx:id="algorithmPicker" prefWidth="187.0" GridPane.columnSpan="3" GridPane.rowIndex="6" GridPane.valignment="TOP">
+            <ChoiceBox fx:id="algorithmPicker" prefWidth="187.0" GridPane.columnSpan="3" GridPane.rowIndex="8" GridPane.valignment="TOP">
               <items>
               </items>
             </ChoiceBox>
+            <Label text="step delay:" GridPane.rowIndex="6" />
+            <Slider fx:id="sortingStepDelaySlider" max="500.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="sortingStepDelayTextField" onAction="#handleStepDelayTextFieldChange" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Separator prefWidth="200.0" GridPane.rowIndex="7" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7" />
          </children>
       </GridPane>
    </left>
